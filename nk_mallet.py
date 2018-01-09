@@ -39,6 +39,7 @@ def extract_data_xml():
                      print >>f,brief_summary
                      f.close()
 
+                     # Invoke the mallet command from the python 
                      smallet="bin/mallet import-file --input summary_temp_file --print-output --remove-stopwords --keep-sequence | awk -F ' ' '{if($2 ==\"0:\") {print $3} else {print $2}}' | tr -s '\n' ' '"
                      smallet_output = commands.getoutput(smallet)
                      os.remove(stemp_file)
@@ -57,6 +58,7 @@ def extract_data_xml():
                      print >>f,detailed_description
                      f.close()
 
+                     # Invoke the mallet command from the python 
                      dmallet="bin/mallet import-file --input desc_temp_file --print-output --remove-stopwords --keep-sequence | awk -F ' ' '{if($2 ==\"0:\") {print $3} else {print $2}}' | tr -s '\n' ' '"
                      dmallet_output = commands.getoutput(dmallet)
                      os.remove(dtemp_file)
